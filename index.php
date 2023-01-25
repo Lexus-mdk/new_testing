@@ -1,6 +1,6 @@
 <?php
-require_once 'People.php';
-require_once 'Form.php';
+require_once 'classes/People.php';
+require_once 'classes/Form.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -10,8 +10,8 @@ require_once 'Form.php';
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Перепись</title>
-    <link href="style.css" rel="stylesheet">
-    <script src="jquery-3.6.3.min.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/jquery-3.6.3.min.js"></script>
 </head>
 <body>
 <h1>Перепись</h1>
@@ -41,6 +41,6 @@ require_once 'Form.php';
         People::statistic();
         ?>
     </div>
-<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

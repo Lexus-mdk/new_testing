@@ -14,6 +14,7 @@ class MySql extends mysqli
         $this->connect = true;
     }
 
+    // Проверка подключения к базе данных. Не использовал, но пусть будет
     public function connected()
     {
         return $this->connect;

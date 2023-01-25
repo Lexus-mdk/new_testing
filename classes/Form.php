@@ -1,7 +1,7 @@
 <?php
 class Form
 {
-
+    // Проверка является ли переданный параметр массивом. Зачем? Чисто чтобы исключение добавить
     private function isArray($form){
 
         if( !is_array($form) ){
@@ -11,6 +11,7 @@ class Form
 
     }
 
+    // Создание аттрибутов для добавления в html теги
     private function parametr($attributes = []){
         $param = '';
         if( !empty($attributes) && $this->isArray($attributes) ){
@@ -21,6 +22,7 @@ class Form
         return $param;
     }
 
+    // Создание формы
     public static function Begin($attributes){
         $form = new self();
         $param = "<form ". $form->parametr($attributes) ." >\n";
@@ -28,6 +30,7 @@ class Form
         return $form;
     }
 
+    // Добавление поля в форму
     public function input ($attributes, $label = false, $required = false){
         $this->isArray($attributes);
 
@@ -40,6 +43,7 @@ class Form
         return $param;
     }
 
+    // Добавление кнопки в форму
     public function submit ($attributes = []){
 
         $this->isArray($attributes);
@@ -49,6 +53,7 @@ class Form
         return $this->input($attributes);
     }
 
+    // Закрытие формы
     public static function end(){
         echo "</form>\n";
     }

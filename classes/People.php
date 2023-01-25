@@ -1,9 +1,12 @@
 <?php
-require_once 'MySql.php';
-class People extends MySql{
+require_once 'Mysql.php';
+
+class People extends MySql
+{
     public $name;
     public $age;
 
+    //    Создание записи
     public function new_man(){
         if ($this->name && $this->age){
             $this->query("INSERT INTO `people` (`name`, `age`) VALUES ('" .$this->name."', '".$this->age."')");
@@ -16,6 +19,7 @@ class People extends MySql{
         return false;
     }
 
+    //    Обновление записи
     public function update_man($id){
         if ($this->name && $this->age){
             $this->query("UPDATE `people` SET name='" .$this->name."', age='".$this->age."' WHERE id=$id");
@@ -28,6 +32,7 @@ class People extends MySql{
         return false;
     }
 
+    //    Удаление записи
     public static function del_man($id){
         $pepole = new self();
         $pepole->query("DELETE FROM people WHERE `id`=$id");
@@ -40,18 +45,27 @@ class People extends MySql{
 
     }
 
+    //    Вывод таблицы people
     public static function render_table(){
         $table = new self();
         echo '<table><tbody>';
         $people = $table->query('SELECT * FROM people');
         while ($x = $people->fetch_array()){
             echo '<tr><td>'. $x['name'] .'</td>';
-            echo '<td>'. $x['age'] .'</td><td><a href="#" class="update" data-id="'. $x['id'] .'" data-name="'. $x['name'] .'" data-age="'. $x['age'] .'">Изменить</a></td><td><a href="del_man.php?id='. $x['id'] .'">Удалить</a></td></tr>';
+            echo '<td>'. $x['age'] .'</td>
+                <td>
+                    <a href="#" class="update" data-id="'. $x['id'] .'" data-name="'. $x['name'] .'" data-age="'. $x['age'] .'">Изменить</a>
+                </td>
+                <td>
+                    <a href="del_man.php?id='. $x['id'] .'">Удалить</a>
+                </td>
+                </tr>';
         }
         echo '</tbody></table>';
 
     }
 
+    //    Вывод блока статистики
     public static function statistic(){
         $table = new self();
         $stats = $table->query('SELECT SUM(age) as sum, COUNT(age) as count FROM people')->fetch_array();
