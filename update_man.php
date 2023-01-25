@@ -1,5 +1,5 @@
 <?php
-require_once 'People.php';
+require_once 'classes/People.php';
 
 if ($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
     $model = new People();
