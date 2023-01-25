@@ -1,0 +1,16 @@
+body {
+    background-color: gray;
+    color: white;
+}
+.form {
+    background-color: aqua;
+
+    width: 30%;
+}
+.statistic {
+    background-color: #242323;
+    color: aqua;
+}
+.none{
+    display: none;
+}
